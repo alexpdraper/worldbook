@@ -1,27 +1,26 @@
 <template>
-  <div class="home">
+  <div class="location-index">
     <div class="wrapper">
       <div class="main-column">
-        <h1 class="title">The World of Felvand</h1>
+        <h2 class="title">Locations</h2>
+        <p class="subtitle">Points of interest in the world of Felvand</p>
+
         <div class="box">
           <div class="menu">
             <menu-list :items="menuItems" />
           </div>
         </div>
       </div>
+      <!-- <div class="sidebar-column"></div> -->
     </div>
   </div>
 </template>
 
 <script>
 import MenuList from '@/components/MenuList'
-import menuItems from '@/data/menu'
-const topMenu = menuItems
-  .map(item => ({ to: item.to, label: item.label }))
-  .filter(item => item.to.name !== 'Home')
 
 export default {
-  name: 'Home',
+  name: 'LocationIndex',
 
   components: {
     MenuList
@@ -29,7 +28,9 @@ export default {
 
   data () {
     return {
-      menuItems: topMenu
+      menuItems: [
+        { to: { name: 'Location', params: { location: 'marinville' } }, label: 'Marinville' }
+      ]
     }
   }
 }

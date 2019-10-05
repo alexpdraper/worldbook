@@ -1,0 +1,35 @@
+@require 'base'
+@require 'title'
+@require 'box'
+@require 'image'
+@require 'table'
+@require 'tags'
+
+.wrapper
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  @media (min-width: 992px)
+    flex-wrap: nowrap
+  .main-column,
+  .sidebar-column
+    width: 100%
+    margin-bottom: 2rem
+  .main-column
+    @media (min-width: 992px)
+      padding-right: 0.75rem
+      max-width: 100%
+      flex-basis: 0
+      flex-grow: 1
+    @media (min-width: 1024px)
+      max-width: 400px
+      flex: 0 0 400px
+    @media (min-width: 1200px)
+      max-width: 500px
+      flex: 0 0 500px
+  .sidebar-column
+    @media (min-width: 992px)
+      padding-left: 0.75rem
+      max-width: 100%
+      flex-basis: 0
+      flex-grow: 1

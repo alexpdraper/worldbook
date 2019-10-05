@@ -1,0 +1,71 @@
+table
+  border-collapse: collapse
+  border-spacing: 0
+  td,
+  th
+    vertical-align: top
+    &:not([align])
+      text-align: left
+  th
+    color: #363636
+
+.table
+  background-color: white
+  color: #363636
+  td,
+  th
+    border: 1px solid #dbdbdb
+    border-width: 0 0 1px
+    padding: 0.5em 0.75em
+    vertical-align: top
+  thead,
+  tfoot
+    background-color: transparent
+    td,
+    th
+      border-width: 0 0 2px
+      color: #363636
+  tbody
+    background-color: transparent
+    tr:last-child
+      td,
+      th
+        border-bottom-width: 0
+  &.is-bordered
+    td,
+    th
+      border-width: 1px
+    tr:last-child
+      td,
+      th
+        border-bottom-width: 1px
+  &.is-fullwidth
+    width: 100%
+  &.is-borderless tbody tr
+    td,
+    th
+      border: 0
+  &.is-small
+    font-size: 0.9rem
+  &.is-narrow
+    td,
+    th
+      padding: 0.25em 0.5em
+  &.has-split-columns
+    @media (min-width: 768px)
+      font-size: 0.9rem
+    tr
+      td,
+      th
+        &:first-child
+          text-align: left
+          padding-left: 0
+        &:last-child
+          text-align: right
+          padding-right: 0
+
+.table-container
+  -webkit-overflow-scrolling: touch
+  overflow: auto
+  overflow-y: hidden
+  max-width: 100%

@@ -1,25 +1,59 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <main-layout>
+      <template #sidebar>
+        <nav class="menu is-small">
+          <p class="menu-label">Felvand</p>
+          <menu-list :items="menuItems" />
+        </nav>
+      </template>
+
+      <router-view />
+    </main-layout>
   </div>
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+<script>
+import MainLayout from './components/MainLayout'
+import MenuList from './components/MenuList'
+import menuItems from './data/menu'
+
+export default {
+  name: 'App',
+
+  components: {
+    MainLayout,
+    MenuList
+  },
+
+  data () {
+    return {
+      menuItems
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+#app
+  width: 1240px
+  max-width: 100%
+  margin: 0 auto
+
+.menu
+  font-size: 1rem
+  @media (min-width: 768px)
+    font-size: 0.8rem
+
+.menu-label
+  color: #7a7a7a
+  font-size: 0.75em
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  margin: 0
+  padding: 0
+  &:not(:first-child)
+    margin-top: 1em
+  &:not(:last-child)
+    margin-bottom: 1em
 </style>
