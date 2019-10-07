@@ -70,7 +70,7 @@
           <h3 class="heading">Profile</h3>
           <table class="table is-fullwidth has-split-columns is-narrow is-borderless">
             <tbody>
-              <tr>
+              <tr v-if="alignment">
                 <th>Alignment</th>
                 <td>{{ alignment }}</td>
               </tr>
@@ -82,7 +82,7 @@
                 <th>Class</th>
                 <td>{{ characterClass }}</td>
               </tr>
-              <tr>
+              <tr v-if="deity">
                 <th>Deity</th>
                 <td>{{ deity }}</td>
               </tr>
@@ -90,15 +90,15 @@
                 <th>Gender</th>
                 <td>{{ gender }}</td>
               </tr>
-              <tr>
+              <tr v-if="age">
                 <th>Age</th>
                 <td>{{ age }}</td>
               </tr>
-              <tr>
+              <tr v-if="height">
                 <th>Height</th>
                 <td>{{ height }}</td>
               </tr>
-              <tr>
+              <tr v-if="weight">
                 <th>Weight</th>
                 <td>{{ weight }}</td>
               </tr>

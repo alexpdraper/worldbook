@@ -19,6 +19,13 @@
 
 <script>
 import MenuList from '@/components/MenuList'
+import menuData from '@/data/menu'
+
+const menuItems = (() => {
+  let topMenu = menuData.find(menu => menu.label === 'Characters')
+  if (topMenu && topMenu.children) return topMenu.children
+  return []
+})()
 
 export default {
   name: 'CharacterIndex',
@@ -29,12 +36,7 @@ export default {
 
   data () {
     return {
-      menuItems: [
-        { to: { name: 'Character', params: { id: 'jubilant' } }, label: 'Jubilant' },
-        { to: { name: 'Character', params: { id: 'winchester' } }, label: 'Winchester' },
-        { to: { name: 'Character', params: { id: 'wizard' } }, label: 'Wizard' },
-        { to: { name: 'Character', params: { id: 'spring' } }, label: 'Spring' }
-      ]
+      menuItems
     }
   }
 }

@@ -17,9 +17,10 @@ export default [
     label: 'Characters',
     children: [
       { to: { name: 'Character', params: { id: 'jubilant' } }, label: 'Jubilant' },
+      { to: { name: 'Character', params: { id: 'robyn' } }, label: 'Robyn' },
       { to: { name: 'Character', params: { id: 'winchester' } }, label: 'Winchester' },
       { to: { name: 'Character', params: { id: 'wizard' } }, label: 'Wizard' },
-      { to: { name: 'Character', params: { id: 'spring' } }, label: 'Spring' }
+      { to: { name: 'Character', params: { id: 'ernst' } }, label: 'Ernst Worman' }
     ]
   },
   {
