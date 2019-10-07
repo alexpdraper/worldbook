@@ -1,5 +1,5 @@
 export default {
   name: 'Marinville',
-  mapUrl: '/marinville-map.png',
-  description: 'A lovely coastal town reknowned for it’s delicious seafood.'
+  mapUrl: '/marinville-map.jpg',
+  description: 'A lovely coastal town reknowned for its delicious seafood.'
 }

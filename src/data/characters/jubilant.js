@@ -7,7 +7,7 @@ export default {
   deity: 'Cyrrollalee',
   gender: 'Male',
   age: 47,
-  height: '3\'1"',
+  height: '3\' 1"',
   weight: '50 lbs',
   imgUrl: '/jubilant-sketch.jpg',
   abilityScores: {
