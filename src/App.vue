@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <main-layout>
-      <template #sidebar>
-        <nav class="menu is-small">
-          <p class="menu-label">Felvand</p>
-          <menu-list :items="menuItems" />
-        </nav>
-      </template>
+    <div class="background">
+      <main-layout>
+        <template #sidebar>
+          <nav class="menu is-small">
+            <p class="menu-label">Felvand</p>
+            <menu-list :items="menuItems" />
+          </nav>
+        </template>
 
-      <router-view />
-    </main-layout>
+        <router-view />
+      </main-layout>
+    </div>
   </div>
 </template>
 
@@ -36,9 +38,11 @@ export default {
 
 <style lang="stylus" scoped>
 #app
-  width: 1240px
+  width: 1440px
   max-width: 100%
-  margin: 0 auto
+
+.background
+  background: top left repeat url('/backgrounds/tree-bark.png')
 
 .menu
   font-size: 1rem

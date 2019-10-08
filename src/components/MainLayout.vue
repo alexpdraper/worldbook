@@ -47,11 +47,7 @@ export default {
 
 .sidebar
   position: relative
-  background-color: #efefef
-  border-bottom: 1px solid #dbdbdb
   @media (min-width: 768px)
-    background-color: transparent
-    border-bottom: 0
     max-width: 260px
     flex: 0 0 260px
   @media (min-width: 1024px)
@@ -59,20 +55,31 @@ export default {
     flex: 0 0 300px
 
 .divider
-  display: none
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 100%
+  background-color: #fff
+  border: 1px solid #2a63a4
+  border-width: 1px 0
+  height: 4px
   @media (min-width: 768px)
-    display: block
-    position: absolute
-    right: -2px
-    top: 0
-    bottom: 0
-    width: 1px
-    border-right: 4px dotted #dbdbdb
+    right: 0px
+    width: 4px
+    height: 100%
+    border-width: 0 1px
 
 .content
+  background: #fff
   @media (min-width: 768px)
     overflow: hidden
     max-width: 100%
     flex-basis: 0
     flex-grow: 1
+    min-height: 100vh
+.content > .container
+  @media (min-width: 1240px)
+    margin-right: auto
+    margin-left: auto
+    max-width: 940px
 </style>

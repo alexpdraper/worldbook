@@ -72,7 +72,7 @@ export default {
       background-color: #2a63a4
       color: #fff
   &.is-nested
-    border-left: 2px dotted #dbdbdb
+    border-left: 1px solid rgba(0, 0, 0, 0.2)
     margin: 0.75em
     padding-left: 0.75em
     display: none
