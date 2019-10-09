@@ -1,0 +1,22 @@
+$progressEmptyColor = #dbdbdb
+$progressFilledColor = gold
+
+.progress
+  -moz-appearance: none
+  -webkit-appearance: none
+  border: none
+  border-radius: 290486px
+  display: block
+  height: 1rem
+  overflow: hidden
+  padding: 0
+  width: 100%
+  &::-webkit-progress-bar
+    background-color: $progressEmptyColor
+  &::-webkit-progress-value
+    background-color: $progressFilledColor
+  &::-moz-progress-bar
+    background-color: $progressFilledColor
+  &::-ms-fill
+    background-color: $progressFilledColor
+    border: none
