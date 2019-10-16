@@ -319,10 +319,10 @@ export default {
       else if (result === 1) str = 'Ouch…that’s a 1.'
       else str = `Rolled ${result}!`
 
-      str += '\n\n'
+      str += '\n'
       str += `${result}${modifier} = ${result + parsedModifier}`
 
-      alert(str)
+      this.$toast(str)
     }
   }
 }
@@ -349,4 +349,9 @@ export default {
   background-color: #2a63a4
   color: #fff
   border-radius: 290486px
+
+.tag
+  border-color: transparent
+  &:hover
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)
 </style>
