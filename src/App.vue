@@ -4,8 +4,11 @@
       <main-layout>
         <template #sidebar>
           <nav class="menu is-small">
-            <p class="menu-label">Felvand</p>
-            <menu-list :items="menuItems" />
+            <h2 class="menu-label heading">Felvand</h2>
+            <menu-list
+              :items="menuItems"
+              class="is-light"
+            />
           </nav>
         </template>
 
@@ -41,16 +44,15 @@ export default {
   width: 1440px
   max-width: 100%
 
-.background
-  background: top left repeat url('/backgrounds/tree-bark.png')
-
 .menu
   font-size: 1rem
   @media (min-width: 768px)
-    font-size: 0.8rem
+    font-size: 0.85rem
+  @media (min-width: 992px)
+    font-size: 0.75rem
 
 .menu-label
-  color: #7a7a7a
+  color: #b0b0b0
   font-size: 0.75em
   letter-spacing: 0.1em
   text-transform: uppercase

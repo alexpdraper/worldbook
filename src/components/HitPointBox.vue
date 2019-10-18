@@ -3,7 +3,7 @@
     <h3 class="heading">
       Hit points ({{ cmpCurrent }}/{{ cmpMax }})
       <template v-if="cmpTemp">
-        +{{ cmpTemp }}
+        <template v-if="cmpTemp > 0">+</template>{{ cmpTemp }}
       </template>
     </h3>
 
@@ -40,61 +40,76 @@
       v-if="editing"
       @submit.prevent="editing = false"
     >
-      <div class="field">
-        <label
-          :for="currentHpInputId"
-          class="label"
-        >
-          Current HP
-        </label>
-        <div class="control">
-          <input
-            v-model.number="cmpCurrent"
-            :id="currentHpInputId"
-            :max="currentMaxHp"
-            class="input"
-            type="number"
-            step="1"
-            min="0"
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label
+            :for="currentHpInputId"
+            class="label"
           >
+            Current HP
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input
+                v-model.number="cmpCurrent"
+                :id="currentHpInputId"
+                :max="currentMaxHp"
+                class="input"
+                type="number"
+                step="1"
+                min="0"
+              >
+            </div>
+          </div>
         </div>
       </div>
-      <div class="field">
-        <label
-          :for="maxHpInputId"
-          class="label"
-        >
-          Max HP
-        </label>
-        <div class="control">
-          <input
-            v-model.number="cmpMax"
-            :id="maxHpInputId"
-            class="input"
-            type="number"
-            step="1"
-            min="0"
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label
+            :for="maxHpInputId"
+            class="label"
           >
+            Max HP
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input
+                v-model.number="cmpMax"
+                :id="maxHpInputId"
+                class="input"
+                type="number"
+                step="1"
+                min="0"
+              >
+            </div>
+          </div>
         </div>
       </div>
-      <div
-        class="field"
-        style="margin-bottom: 1rem"
-      >
-        <label
-          :for="tempHpInputId"
-          class="label"
-        >
-          Temporary HP
-        </label>
-        <div class="control">
-          <input
-            v-model.number="cmpTemp"
-            :id="tempHpInputId"
-            class="input"
-            type="number"
-            step="1"
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label
+            :for="tempHpInputId"
+            class="label"
           >
+            Temp. HP
+          </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input
+                v-model.number="cmpTemp"
+                :id="tempHpInputId"
+                class="input"
+                type="number"
+                step="1"
+              >
+            </div>
+          </div>
         </div>
       </div>
 
@@ -112,9 +127,6 @@
 
 <script>
 import uniqueId from '@/util/unique-id'
-
-// const clamp = (value, min, max) =>
-//   Math.max(Math.min(parseInt(value, 10), max), min)
 
 export default {
   name: 'HitPointBox',
@@ -214,6 +226,8 @@ export default {
   height: 1.5rem
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
     0 0 0 1px rgba(10, 10, 10, 0.1)
+  border: 1px solid #fff
+  z-index: 10
   .hp-bar-current
     transition: transform 0.3s ease
     transform-origin: left
@@ -226,64 +240,4 @@ export default {
 
 .hp-buttons:not(:last-child)
   margin-bottom: 0.5rem
-
-.field
-  display: flex
-  align-items: center
-  margin-bottom: 0.25rem
-  .label
-    color: #363636
-    display: block
-    font-size: 1rem
-    flex: 0 0 35%
-    max-width: 0 0 35%
-  .input
-    border: 1px solid #dbdbdb
-    border-radius: 4px
-    box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1)
-    width: 100%
-    max-width: 100%
-    padding-top: calc(0.375em - 1px)
-    padding-bottom: calc(0.375em - 1px)
-    text-indent: calc(0.625em - 1px)
-    font-size: 1rem
-    height: 2.25em
-    line-height: 1.5
-    margin: 0
-    position: relative
-    background-color: white
-    color: #363636
-    &:active,
-    &.is-active,
-    &:focus,
-    &.is-focused
-      outline: none
-    &[disabled]
-      cursor: not-allowed
-    &:hover,
-    &.is-hovered
-      border-color: #b5b5b5
-      color: #363636
-    &:focus,
-    &.is-focused
-      border-color: #3273dc
-      color: #363636
-    &:focus:not(:active),
-    &.is-focused:not(:active)
-      box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25)
-    &:active,
-    &.is-active
-      border-color: #4a4a4a
-      color: #363636
-    &.is-rounded
-      border-radius: 290486px
-
-  .control
-    box-sizing: border-box
-    clear: both
-    font-size: 1rem
-    position: relative
-    text-align: left
-    flex-basis: 0
-    flex-grow: 1
 </style>

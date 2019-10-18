@@ -4,7 +4,6 @@
       <div class="container">
         <slot name="sidebar" />
       </div>
-      <div class="divider" />
     </aside>
 
     <div class="content">
@@ -32,7 +31,7 @@ export default {
 
 .container
   width: 100%
-  max-width: 600px
+  max-width: 500px
   margin-right: auto
   margin-left: auto
   @media (min-width: 768px)
@@ -43,34 +42,22 @@ export default {
   width: 100%
   padding: 1.5rem
   @media (min-width: 768px)
-    padding: 3rem 2rem
+    padding: 2rem 1.5rem
 
 .sidebar
   position: relative
+  background: top left repeat url('/backgrounds/stardust.png')
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)
   @media (min-width: 768px)
+    max-width: 220px
+    flex: 0 0 220px
+    padding-right: 1rem
+    padding-left: 1rem
+  @media (min-width: 1240px)
     max-width: 260px
     flex: 0 0 260px
-  @media (min-width: 1024px)
-    max-width: 300px
-    flex: 0 0 300px
-
-.divider
-  position: absolute
-  right: 0
-  bottom: 0
-  width: 100%
-  background-color: #fff
-  border: 1px solid #2a63a4
-  border-width: 1px 0
-  height: 4px
-  @media (min-width: 768px)
-    right: 0px
-    width: 4px
-    height: 100%
-    border-width: 0 1px
 
 .content
-  background: #fff
   @media (min-width: 768px)
     overflow: hidden
     max-width: 100%
@@ -78,8 +65,8 @@ export default {
     flex-grow: 1
     min-height: 100vh
 .content > .container
-  @media (min-width: 1240px)
-    margin-right: auto
-    margin-left: auto
-    max-width: 940px
+  @media (min-width: 768px)
+    max-width: 500px
+  @media (min-width: 992px)
+    max-width: 1000px
 </style>

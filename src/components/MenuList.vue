@@ -78,4 +78,15 @@ export default {
     display: none
     @media (min-width: 768px)
       display: block
+.is-light
+  .link
+    color: whitesmoke
+    &:hover
+      background-color: rgba(245, 245, 245, 0.2)
+      color: #f5f5f5
+    &.is-active
+      background-color: #ff9a8b
+      color: #444349
+  .menu-list.is-nested
+    border-left: 2px solid rgb(103, 103, 107)
 </style>

@@ -75,6 +75,13 @@
     border-radius: 290486px
   &.is-fullwidth
     width: 100%
+  &.is-loading
+    color: transparent !important
+    pointer-events: none
+    &::after
+      position: absolute !important
+      left: calc(50% - (1em / 2))
+      top: calc(50% - (1em / 2))
 
 .button.is-primary
   background-color: #2a63a4

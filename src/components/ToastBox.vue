@@ -10,7 +10,10 @@
       class="toast"
       @click="toasts.splice(index, 1)"
     >
-      <div class="toast-message">{{ toast.message }}</div>
+      <div
+        v-html="toast.message"
+        class="toast-message"
+      />
     </div>
   </transition-group>
 </template>
@@ -56,21 +59,22 @@ export default {
   z-index: 10
   .toast
     border-radius: 6px
-    background: top left repeat url('/backgrounds/tree-bark.png')
+    background: top left repeat url('/backgrounds/stardust.png')
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
       1px 3px 8px 2px rgba(10, 10, 10, 0.15)
     border: 5px solid #fff
     .toast-message
       padding: 1rem
-      white-space: pre-line
-      background-color: rgba(255, 255, 255, 0.3)
+      color: #f5f5f5
     &:not(:last-child)
       margin-bottom: 0.5rem
     &.list-enter-active,
     &.list-leave-active
-      transition: all 0.3s
-    &.list-enter,
+      transition: all 0.3s, opacity 0.2s
+    &.list-enter
+      opacity: 0
+      transform: translateY(30px) translateX(300px) scale(0)
     &.list-leave-to
       opacity: 0
-      transform: translateY(30px)
+      transform: translateY(30px) scale(0)
 </style>

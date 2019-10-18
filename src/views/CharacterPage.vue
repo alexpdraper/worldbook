@@ -15,9 +15,6 @@
         <header class="header">
           <h2 class="title">{{ name }}</h2>
           <p class="subtitle">{{ headline }}</p>
-          <p class="bio">
-            {{ bio }}
-          </p>
         </header>
 
         <hit-point-box
@@ -29,14 +26,26 @@
         <div class="box">
           <h3 class="heading">Stats</h3>
           <div class="tags">
-            <span class="tag">
-              Level: <strong>{{ level }}</strong>
+            <span
+              v-if="level"
+              class="tag"
+            >
+              <span style="margin-right: 0.25em">Level:</span>
+              <strong>{{ level }}</strong>
             </span>
-            <span class="tag">
-              AC: <strong>{{ ac }}</strong>
+            <span
+              v-if="ac"
+              class="tag"
+            >
+              <span style="margin-right: 0.25em">AC:</span>
+              <strong>{{ ac }}</strong>
             </span>
-            <span class="tag">
-              Speed: <strong>{{ speed }}</strong>
+            <span
+              v-if="speed"
+              class="tag"
+            >
+              <span style="margin-right: 0.25em">Speed:</span>
+              <strong>{{ speed }}</strong>
             </span>
           </div>
         </div>
@@ -60,16 +69,55 @@
             </tbody>
           </table>
         </div>
+
+        <div class="box">
+          <h3 class="heading">
+            Skills
+          </h3>
+          <div class="tags">
+            <!-- eslint-disable-next-line -->
+            <button
+              v-for="{ skill, ability, modifier } in skills"
+              class="button tag"
+              @click="rollD20(modifier)"
+            >
+              {{ skill }}
+              <span style="opacity: 0.7; margin: 0 0.25em">
+                ({{ ability }})
+              </span>
+              {{ modifier }}
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="sidebar-column">
         <div
           v-if="imgUrl"
-          style="margin-bottom: 1.5rem"
+          class="box"
         >
-          <div class="image">
+          <div class="image has-vignette">
             <img :src="imgUrl">
           </div>
+        </div>
+
+        <div class="box">
+          <template v-if="bio">
+            <h3 class="heading">Bio</h3>
+            <p>
+              {{ bio }}
+            </p>
+          </template>
+          <template v-else>
+            <div class="field">
+              <label class="label heading">Bio</label>
+              <div class="control">
+                <textarea
+                  class="input"
+                />
+              </div>
+            </div>
+          </template>
         </div>
 
         <div class="box">
@@ -110,26 +158,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-
-        <div class="box">
-          <h3 class="heading">
-            Skills
-          </h3>
-          <div class="tags">
-            <!-- eslint-disable-next-line -->
-            <button
-              v-for="{ skill, ability, modifier } in skills"
-              class="button tag"
-              @click="rollD20(modifier)"
-            >
-              {{ skill }}
-              <span style="opacity: 0.7; margin: 0 0.25em">
-                ({{ ability }})
-              </span>
-              {{ modifier }}
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -315,12 +343,21 @@ export default {
       const parsedModifier = parseInt(modifier || 0, 10)
 
       let str
-      if (result === 20) str = 'Nat 20, baby!'
-      else if (result === 1) str = 'Ouch…that’s a 1.'
-      else str = `Rolled ${result}!`
-
-      str += '\n'
-      str += `${result}${modifier} = ${result + parsedModifier}`
+      if (result === 20) {
+        str = `<div class="title is-3" style="margin: 0; color: inherit;">Nat 20, baby!</div>`
+      } else if (result === 1) {
+        str = `<div class="title is-3" style="margin: 0; color: inherit;">Ouch…that’s a 1.</div>`
+      } else {
+        str = `
+          <div style="display: flex; align-items: center; width: 100%; justify-content: space-between">
+            <div class="title is-1" style="margin: 0; color: inherit; flex: 0 0 auto">${result + parsedModifier}</div>
+            <div style="padding-left: 1rem; text-align: right; flex-basis: 0; flex-grow: 1">
+              Roll: ${result}
+              <br>
+              Modifier: ${modifier}
+            </div>
+          </div>`
+      }
 
       this.$toast(str)
     }
@@ -350,7 +387,7 @@ export default {
   color: #fff
   border-radius: 290486px
 
-.tag
+.button.tag
   border-color: transparent
   &:hover
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)
